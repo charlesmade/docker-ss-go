@@ -162,12 +162,12 @@ download_files(){
 
     # Download start script
     if check_sys packageManager yum; then
-        if [! -f ss-go-redhat]; then
+        if [! -f "ss-go-redhat"]; then
             echo -e "[${red}Error${plain}] Failed to find ss-go-redhat auto start script!"
             exit 1
         fi
     elif check_sys packageManager apt; then
-        if [! -f ss-go-debian]; then
+        if [! -f "ss-go-debian"]; then
             echo -e "[${red}Error${plain}] Failed to find ss-go-debian auto start script!"
             exit 1
         fi
@@ -176,10 +176,10 @@ download_files(){
 
 # Config shadowsocks
 config_shadowsocks(){
-    if [ ! -d /etc/shadowsocks ]; then
+    if [ ! -d "/etc/shadowsocks" ]; then
         mkdir -p /etc/shadowsocks
     fi
-    if [! -f /etc/shadowsocks/config.json]; then
+    if [ ! -f "/etc/shadowsocks/config.json" ]; then
         cat > /etc/shadowsocks/config.json<<-EOF
 {
     "server":"0.0.0.0",

@@ -13,6 +13,9 @@ ENV TZ "Asia/Shanghai"
 ENV FILE_PATH /usr/local/bin/
 # RUN mkdir -p ${FILE_PATH}
 
+ARG DEBIAN_FRONTEND=noninteractive
+RUN apt-get update && apt-get install --assume-yes apt-utils
+
 COPY ./ss-go-* ${FILE_PATH}
 
 RUN set -xe && \
